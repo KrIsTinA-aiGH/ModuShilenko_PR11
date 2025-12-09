@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="18000"
+    android:fillAfter="false"
+    android:repeatMode="restart"
+    android:repeatCount="infinite"
+    android:interpolator="@android:anim/cycle_interpolator">
+
+    <translate
+        android:fromXDelta="-25%"
+        android:toXDelta="125%"
+        android:fromYDelta="0%"
+        android:toYDelta="10%" />
+
+    <!-- Волнообразное движение вверх-вниз -->
+    <translate
+        android:fromYDelta="0"
+        android:toYDelta="30"
+        android:duration="2000"
+        android:repeatMode="reverse"
+        android:repeatCount="infinite" />
+</set>

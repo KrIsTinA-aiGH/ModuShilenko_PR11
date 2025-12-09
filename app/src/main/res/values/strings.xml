@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PR11ShilenkoPR-23.101</string>
+    <string name="sun">Солнце</string>
+    <string name="grass">Трава</string>
+    <string name="sky">Небо</string>
+    <string name="clock">Часы</string>
+    <string name="hour">Стрелка</string>
+    <string name="cloud">Облако</string>
+    <string name="cat">Кот Рыжик</string>
+</resources>
