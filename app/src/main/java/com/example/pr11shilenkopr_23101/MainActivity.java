@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private final List<Animation> cloudAnimations = new ArrayList<>();
     private Animation hourHandAnimation;
     private boolean animationsStopped = false;
+    private final float[] cloudFinalX = new float[6];
+    private final float[] cloudFinalY = new float[6];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,33 +203,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void stopAllCloudAnimations() {
-        // Останавливаем все облака
         int[] cloudIds = {R.id.cloud1, R.id.cloud2, R.id.cloud3,
                 R.id.cloud4, R.id.cloud5, R.id.cloud6};
 
-        for (int id : cloudIds) {
-            ImageView cloud = findViewById(id);
+        for (int i = 0; i < cloudIds.length; i++) {
+            ImageView cloud = findViewById(cloudIds[i]);
             if (cloud != null) {
-                // Получаем текущую позицию облака
-                float currentX = cloud.getX();
-                float currentY = cloud.getY();
+                // Сохраняем текущую позицию
+                cloudFinalX[i] = cloud.getX();
+                cloudFinalY[i] = cloud.getY();
 
                 // Очищаем анимацию
                 cloud.clearAnimation();
 
-                // Устанавливаем облако в текущую позицию
-                cloud.setX(currentX);
-                cloud.setY(currentY);
+                // Устанавливаем облако в сохраненную позицию
+                cloud.setX(cloudFinalX[i]);
+                cloud.setY(cloudFinalY[i]);
             }
         }
 
-        // Также очищаем все анимации из списка
+        // Очищаем все анимации из списка
         for (Animation anim : cloudAnimations) {
             anim.cancel();
         }
         cloudAnimations.clear();
 
-        // Можно добавить визуальный эффект - облака медленно исчезают
+        // Добавляем эффект исчезновения облаков
         fadeOutClouds();
     }
 
@@ -291,5 +292,7 @@ public class MainActivity extends AppCompatActivity {
         if (hourHandAnimation != null) {
             hourHandAnimation.cancel();
         }
+
+
     }
 }
